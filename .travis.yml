@@ -8,8 +8,10 @@ before_script:
   - sudo apt-get install liblapack-dev
   - sudo apt-get install python-qt4
   - sudo apt-get install texlive-latex-base
-  - pip install sphinx
-  - pip install sphinx-apidocs
+  - sudo pip install sphinx
+  - sudo pip install sphinx-apidocs
+  - sudo apt-get install python-pandas
+  - sudo apt-get install python-matplotlib
   - mkdir build
   - cd build
   - cmake -DPYTHON_INSTALL_PREFIX=python -DBUILD_ERT=ON -DERT_BUILD_GUI=ON -DBUILD_ENS_PLOT=ON -DBUILD_TESTS=ON -DBUILD_APPLICATIONS=ON -DUSE_RUNPATH=ON -DBUILD_PYTHON=ON -DERT_USE_OPENMP=ON -DERT_DOC=ON ../devel
