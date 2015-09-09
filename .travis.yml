@@ -5,17 +5,22 @@ compiler:
   
 env:
   - CTEST_OUTPUT_ON_FAILURE=TRUE
+  - SITE_CONFIG_FILE=DEFAULT_SITE_CONFIG_FILE
+
+addons:
+  apt:
+    packages:
+      - libplplot-dev
+      - liblapack-dev
+      - texlive-latex-base
+      - python-sphinx
+      - python-qt4
+      - python-pandas
+      - python-matplotlib
 
 before_script:
-  - sudo apt-get install libplplot-dev
-  - sudo apt-get install liblapack-dev
-  - sudo apt-get install python-qt4
-  - sudo apt-get install texlive-latex-base
-  - sudo pip install sphinx
-  - sudo apt-get install python-pandas
-  - sudo apt-get install python-matplotlib
   - mkdir build
   - cd build
-  - cmake -DPYTHON_INSTALL_PREFIX=python -DBUILD_ERT=ON -DERT_BUILD_GUI=ON -DBUILD_ENS_PLOT=ON -DBUILD_TESTS=ON -DBUILD_APPLICATIONS=ON -DUSE_RUNPATH=ON -DBUILD_PYTHON=ON -DERT_USE_OPENMP=ON -DERT_DOC=ON ../devel
+  - cmake -DPYTHON_INSTALL_PREFIX=python -DBUILD_ERT=ON -DERT_BUILD_GUI=ON -DBUILD_ENS_PLOT=ON -DBUILD_TESTS=ON -DBUILD_APPLICATIONS=ON -DUSE_RUNPATH=ON -DBUILD_PYTHON=ON -DERT_USE_OPENMP=ON -DERT_DOC=ON -DSITE_CONFIG_FILE=$SITE_CONFIG_FILE ../devel
 
 script: make && ctest -LE StatoilData -V
