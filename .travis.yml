@@ -9,7 +9,6 @@ env:
 addons:
   apt:
     packages:
-      - libplplot-dev
       - liblapack-dev
       - texlive-latex-base
       - python-sphinx
@@ -18,6 +17,7 @@ addons:
       - python-matplotlib
 
 before_script:
+  - sudo apt-get install libplplot-dev
   - mkdir build
   - cd build
   - cmake -DPYTHON_INSTALL_PREFIX=python -DBUILD_ERT=ON -DERT_BUILD_GUI=ON -DBUILD_ENS_PLOT=ON -DBUILD_TESTS=ON -DBUILD_APPLICATIONS=ON -DUSE_RUNPATH=ON -DBUILD_PYTHON=ON -DERT_USE_OPENMP=ON -DERT_DOC=ON -DSITE_CONFIG_FILE=$SITE_CONFIG_FILE ../devel
