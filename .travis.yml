@@ -5,6 +5,7 @@ compiler:
 
 before_script:
   - sudo apt-get install libplplot-dev
+  - sudo apt-get install liblapack-dev
   - mkdir build
   - cd build
   - cmake -DPYTHON_INSTALL_PREFIX=python -DBUILD_ERT=ON -DERT_BUILD_GUI=ON -DBUILD_ENS_PLOT=ON -DBUILD_TESTS=ON -DBUILD_APPLICATIONS=ON -DUSE_RUNPATH=ON -DBUILD_PYTHON=ON -DERT_USE_OPENMP=ON -DERT_DOC=ON ../devel
