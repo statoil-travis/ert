@@ -20,6 +20,8 @@ before_script:
   - sudo apt-get install libplplot-dev
   - mkdir build
   - cd build
+  - echo "WORKFLOW_JOB_DIRECTORY ../devel/share/workflows/jobs/internal/config" > DEFAULT_SITE_CONFIG_FILE
+  - echo "WORKFLOW_JOB_DIRECTORY ../devel/share/workflows/jobs/internal-gui/config" >> DEFAULT_SITE_CONFIG_FILE
   - cmake -DPYTHON_INSTALL_PREFIX=python -DBUILD_ERT=ON -DERT_BUILD_GUI=ON -DBUILD_ENS_PLOT=ON -DBUILD_TESTS=ON -DBUILD_APPLICATIONS=ON -DUSE_RUNPATH=ON -DBUILD_PYTHON=ON -DERT_USE_OPENMP=ON -DERT_DOC=ON -DSITE_CONFIG_FILE=$SITE_CONFIG_FILE ../devel
 
 script: make && ctest -LE StatoilData -V
